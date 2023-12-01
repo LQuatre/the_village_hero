@@ -14,6 +14,8 @@ public:
 
     void setCharacter(const Character& character);
     Character getCharacter() const;
+    const Character* getCharacterPtr();
+
 private:
     Character m_character = Character("Default", 0, 0, nullptr);
 };

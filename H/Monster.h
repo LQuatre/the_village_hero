@@ -12,7 +12,7 @@ public:
     Monster(std::string name, int damage, int health);
     ~Monster();
 
-    int takeDamage(int damage);
+    void takeDamage(int damage);
 private:
     std::string m_name;
     int m_damage;

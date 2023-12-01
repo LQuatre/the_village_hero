@@ -17,3 +17,7 @@ void Player::setCharacter(const Character& character) {
 Character Player::getCharacter() const {
     return this->m_character;
 }
+
+const Character *Player::getCharacterPtr() {
+    return &this->m_character;
+}

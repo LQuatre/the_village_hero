@@ -14,6 +14,6 @@ Monster::~Monster() {
 
 }
 
-int Monster::takeDamage(int damage) {
+void Monster::takeDamage(int damage) {
     this->m_health -= damage;
 }

@@ -28,6 +28,7 @@ private:
     Village* m_village;
     std::vector<Player*> m_players;
     Player* m_player;
+    std::vector<Character*> m_characters;
 };
 
 

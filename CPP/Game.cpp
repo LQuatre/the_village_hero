@@ -9,6 +9,7 @@
 
 Game::Game() {
     this->m_village = new Village("Konoha");
+    this->m_village->generateBuildings();
     this->m_villages.push_back(this->m_village);
 
     Character thisChar("Milo", 100, 10, nullptr);

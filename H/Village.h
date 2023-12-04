@@ -8,6 +8,9 @@
 #include <iostream>
 #include "vector"
 #include "Building.h"
+#include "../H/Auberge.h"
+#include "../H/Mine.h"
+#include "../H/Dealer.h"
 
 class Village {
 public:
@@ -17,6 +20,10 @@ public:
     void setName(std::string name);
     std::string getName() const;
 
+    void addBuilding(Building *building);
+    std::vector<Building*> getBuildings() const;
+
+    void generateBuildings();
 private:
     std::string m_name;
     std::vector<Building*> m_buildings;

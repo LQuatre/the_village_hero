@@ -4,13 +4,13 @@
 
 #ifndef THE_VILLAGE_HERO__AUBERGE_H
 #define THE_VILLAGE_HERO__AUBERGE_H
+
 #include "Building.h"
 #include "Player.h"
 
-
 class Auberge : public Building {
 public:
-    Auberge(const std::string& name, int price, int givingCare);
+    Auberge(std::string name, int price, int givingCare);
     ~Auberge();
 
     bool BuyHeal(Character& character);

@@ -23,4 +23,6 @@ add_executable(The_village_hero_ main.cpp
         H/Character.h
         CPP/Character.cpp
         H/Auberge.h
-        CPP/Auberge.cpp)
+        CPP/Auberge.cpp
+        dasmig/namegen.hpp
+        dasmig/random.hpp)

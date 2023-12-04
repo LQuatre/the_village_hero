@@ -4,7 +4,7 @@
 
 #include "../H/Auberge.h"
 
-Auberge::Auberge(const std::string &name, int price, int givingCare) : Building(name) {
+Auberge::Auberge(std::string name, int price, int givingCare) : Building(name) {
     this->m_price = price;
     this->m_givingCare = givingCare;
 }

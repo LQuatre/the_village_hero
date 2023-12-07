@@ -56,3 +56,16 @@ Weapon* Character::getWeapon() const {
 void Character::addWeapon(Weapon *weapon) {
     this->m_weapons.push_back(weapon);
 }
+
+void Character::setExperience(int experience) {
+    this->experience = experience;
+}
+
+int Character::getExperience() const {
+    return this->experience;
+}
+
+void Character::addExperience(int experience) {
+    this->experience += experience;
+}
+

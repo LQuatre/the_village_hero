@@ -27,4 +27,8 @@ add_executable(The_village_hero_ main.cpp
         dasmig/namegen.hpp
         dasmig/random.hpp
         src/Name/Name.h
-        src/Name/Name.cpp)
+        src/Name/Name.cpp
+        src/Item/Item.cpp
+        src/Item/Item.h
+        src/Quete/Quete.cpp
+        src/Quete/Quete.h)

@@ -9,15 +9,17 @@
 
 class Player {
 public:
-    Player(const Character& character);
+    Player();
     ~Player();
 
     void setCharacter(const Character& character);
     Character getCharacter() const;
-    const Character* getCharacterPtr();
-
+    Character * getCharacterPtr();
+    void setAdmin(bool admin);
+    bool getAdmin() const;
 private:
-    Character m_character = Character(0, 0, nullptr);
+    Character m_character = *new Character(100, 10, nullptr);
+    bool m_admin = false;
 };
 
 

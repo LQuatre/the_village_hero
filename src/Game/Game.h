@@ -6,9 +6,13 @@
 #define THE_VILLAGE_HERO__GAME_H
 
 #include <iostream>
+#include <string>
 #include <vector>
+#include <windows.h>
 #include "../Village/Village.h"
 #include "../Player/Player.h"
+#include "../Character/Character.h"
+#include "../Quete/Quete.h"
 
 class Game {
 public:
@@ -23,9 +27,11 @@ public:
     void run();
 
     // Methods
-    void ClearTerminal();
+    void clearTerminal();
     void Input();
     void help();
+    void playerAction(std::string action);
+    void playerLevelUp();
 private:
     bool m_isRunning = false;
 
@@ -34,6 +40,8 @@ private:
     std::vector<Player*> m_players;
     Player* m_player;
     std::vector<Character*> m_characters;
+    std::vector<Quete*> m_quetes;
+    std::vector<Quete*> m_activeQuetes;
 };
 
 

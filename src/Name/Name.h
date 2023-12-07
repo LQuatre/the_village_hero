@@ -7,9 +7,9 @@
 
 #include <iostream>
 #include "../../dasmig/namegen.hpp"
+
 // For convenience.
 using ng = dasmig::ng;
-
 
 class Name {
 public:

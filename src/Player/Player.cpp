@@ -4,9 +4,7 @@
 
 #include "Player.h"
 
-Player::Player(const Character& character) {
-    this->m_character = character;
-}
+Player::Player() {}
 
 Player::~Player() {}
 
@@ -18,6 +16,15 @@ Character Player::getCharacter() const {
     return this->m_character;
 }
 
-const Character *Player::getCharacterPtr() {
+Character* Player::getCharacterPtr() {
     return &this->m_character;
+}
+
+void Player::setAdmin(bool admin) {
+    this->m_admin = admin;
+    std::cout << "Admin: " << this->m_admin << std::endl;
+}
+
+bool Player::getAdmin() const {
+    return this->m_admin;
 }

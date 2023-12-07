@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "../Weapon/Weapon.h"
+#include "../Item/Item.h"
 #include "../Name/Name.h"
 
 class Character : public Name {
@@ -30,11 +31,17 @@ public:
     Weapon* getWeapon() const;
     void addWeapon(Weapon* weapon);
 
+    void setExperience(int experience);
+    int getExperience() const;
+    void addExperience(int experience);
+
 private:
     int m_health;
     int m_gold{};
     Weapon* m_weapon;
     std::vector<Weapon*> m_weapons;
+    std::vector<Item*> m_inventory;
+    int experience = 1;
 };
 
 

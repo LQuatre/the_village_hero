@@ -5,7 +5,7 @@
 #include "Item.h"
 
 Item::Item(const std::string& name, int quantity) : Name(name) {
-    this->m_quantity = quantity;
+    m_quantity = quantity;
 }
 
 int Item::getQuantity() const {

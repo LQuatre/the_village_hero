@@ -5,47 +5,47 @@
 #include "Quete.h"
 
 Quete::Quete(std::string name, std::string description, std::string action, int requireExp, int exp, int gold) : Name(name) {
-    this->m_description = description;
-    this->m_requireExp = requireExp;
-    this->m_action = action;
-    this->m_exp = exp;
-    this->m_gold = gold;
+    m_description = description;
+    m_requireExp = requireExp;
+    m_action = action;
+    m_exp = exp;
+    m_gold = gold;
 }
 
 Quete::~Quete() {}
 
 std::string Quete::getDescription() const {
-    return this->m_description;
+    return m_description;
 }
 
 std::string Quete::getAction() const {
-    return this->m_action;
+    return m_action;
 }
 
 int Quete::getExp() const {
-    return this->m_exp;
+    return m_exp;
 }
 
 int Quete::getGold() const {
-    return this->m_gold;
+    return m_gold;
 }
 
 void Quete::setActive(bool active) {
-    this->m_active = active;
+    m_active = active;
 }
 
 bool Quete::getActive() {
-    return this->m_active;
+    return m_active;
 }
 
 int Quete::getRequireExp() const {
-    return this->m_requireExp;
+    return m_requireExp;
 }
 
 bool Quete::getFinish() {
-    return this->m_finish;
+    return m_finish;
 }
 
 void Quete::setFinish(bool finish) {
-    this->m_finish = finish;
+    m_finish = finish;
 }

@@ -13,6 +13,7 @@ public:
     Building();
     Building(const std::string& name);
     ~Building();
+    std::string getType() const;
 private:
 };
 

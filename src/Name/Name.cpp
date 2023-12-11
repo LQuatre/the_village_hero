@@ -5,24 +5,24 @@
 #include "Name.h"
 
 Name::Name() {
-    this->m_name = generateName(ng::gender::m, ng::culture::french);
+    m_name = generateName(ng::gender::m, ng::culture::french);
 }
 
 Name::Name(std::string name) {
     if (name == "") {
         name = generateName(ng::gender::m, ng::culture::french);
     }
-    this->m_name = name;
+    m_name = name;
 }
 
 Name::~Name() {}
 
 void Name::setName(std::string name) {
-    this->m_name = name;
+    m_name = name;
 }
 
 std::string Name::getName() const {
-    return this->m_name;
+    return m_name;
 }
 
 std::string Name::generateName(ng::gender sexe, ng::culture culture) {

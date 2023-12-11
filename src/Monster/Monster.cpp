@@ -5,8 +5,8 @@
 #include "Monster.h"
 
 Monster::Monster(int damage, int health) : Name() {
-    this->m_damage = damage;
-    this->m_health = health;
+    m_damage = damage;
+    m_health = health;
 }
 
 Monster::~Monster() {
@@ -14,5 +14,5 @@ Monster::~Monster() {
 }
 
 void Monster::takeDamage(int damage) {
-    this->m_health -= damage;
+    m_health -= damage;
 }

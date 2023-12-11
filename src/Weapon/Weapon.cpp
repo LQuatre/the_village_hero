@@ -5,8 +5,8 @@
 #include "Weapon.h"
 
 Weapon::Weapon(int price, int damage) : Name() {
-    this->m_price = price;
-    this->m_damage = damage;
+    m_price = price;
+    m_damage = damage;
 }
 
 Weapon::~Weapon() {

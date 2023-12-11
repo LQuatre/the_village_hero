@@ -22,8 +22,13 @@ public:
 
     void generateBuildings();
     void displayBuildings();
+
+    std::vector<Building *> getBuildingsByType(std::string type);
+
 private:
     std::vector<Building*> m_buildings;
+
+    void genBuildingByType(std::string type);
 };
 
 

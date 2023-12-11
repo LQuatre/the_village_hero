@@ -1,7 +1,7 @@
 #include "src/Game/Game.h"
 
 int main() {
-    Game *game = new Game();
-    game->start();
+    Game& game = Game::getInstance();
+    game.start();
     return 0;
 }

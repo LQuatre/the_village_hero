@@ -10,10 +10,16 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <vector>
+#include "../Group_Command/Command/Command.h"
+#include "../Group_Command/HelpCommand/HelpCommand.h"
+#include "../Group_Command/QuitCommand/QuitCommand.h"
+#include "../Group_Command/AdminCommand/AdminCommand.h"
+#include "../Group_Command/CodeCommand/CodeCommand.h"
 
 bool ativatedFreeGold = false;
 
-Game::Game() {
+Game::Game()     {
     m_village = new Village();
     m_village->setName("konoha");
     m_village->generateBuildings();
@@ -73,98 +79,37 @@ void Game::clearTerminal() {
 }
 
 void Game::Input() {
+    Game& game = *this;
     std::cout << std::endl << "What do you want to do ?" << std::endl;
 
     std::string input;
     std::cin >> input;
 
-    if (input == "quit") {
-        std::cout << "You quit the game" << std::endl;
-        m_isRunning = false;
-    } else if (input == "help") {
-        help();
-    } else if (input == "code") {
-        HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
-        DWORD mode = 0;
-        GetConsoleMode(hStdin, &mode);
-        SetConsoleMode(hStdin, mode & (~ENABLE_ECHO_INPUT));
+    HelpCommand helpCommand;
+    QuitCommand quitCommand;
+    AdminCommand adminCommand;
+    CodeCommand codeCommand;
 
-        int c;
-        while ((c = std::cin.get()) != '\n' && c != EOF);
+    std::vector<Command*> commands;
+    commands.push_back(&helpCommand);
+    commands.push_back(&quitCommand);
+    commands.push_back(&adminCommand);
+    commands.push_back(&codeCommand);
 
-        std::string s;
-        getline(std::cin, s);
-
-        if (s == "FreeGold" && !ativatedFreeGold) {
-            ativatedFreeGold = true;
-            m_player->getCharacterPtr()->addGold(9989);
-            std::cout << "Vous avez actuellement : " << m_player->getCharacter().getGold() << " pieces d'or" << std::endl;
-        } else {
-            std::cout << "Vous avez deja utilise ce code" << std::endl;
+    for (int i = 0; i < commands.size(); i++) {
+        if (input == commands[i]->getCommandName()) {
+            commands[i]->execute(*this);
+            return;
         }
-    } else if (input == "admin") {
-        HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
-        DWORD mode = 0;
-        GetConsoleMode(hStdin, &mode);
-        SetConsoleMode(hStdin, mode & (~ENABLE_ECHO_INPUT));
-
-        int c;
-        while ((c = std::cin.get()) != '\n' && c != EOF);
-
-        std::string s;
-        getline(std::cin, s);
-
-        if (s == "RocketLeague2023") {
-            m_player->setAdmin(true);
-        }
-    } else if (input == "addGold" || input == "removeGold" || input == "setGold" || input == "setHealth" || input == "heal") {
-        if (m_player->getAdmin()) {
-            if (input == "addGold") {
-                std::cout << "How many gold do you want to add ?" << std::endl;
-                int gold;
-                std::cin >> gold;
-                m_player->getCharacterPtr()->addGold(gold);
-                std::cout << "You have now " << m_player->getCharacter().getGold() << " gold" << std::endl;
-            } else if (input == "removeGold") {
-                std::cout << "How many gold do you want to remove ?" << std::endl;
-                int gold;
-                std::cin >> gold;
-                m_player->getCharacterPtr()->removeGold(gold);
-                std::cout << "You have now " << m_player->getCharacter().getGold() << " gold" << std::endl;
-            } else if (input == "setGold") {
-                std::cout << "How many gold do you want to set ?" << std::endl;
-                int gold;
-                std::cin >> gold;
-                m_player->getCharacterPtr()->setGold(gold);
-                std::cout << "You have now " << m_player->getCharacter().getGold() << " gold" << std::endl;
-            } else if (input == "setHealth") {
-                std::cout << "How many health do you want to set ?" << std::endl;
-                int health;
-                std::cin >> health;
-                m_player->getCharacterPtr()->setHealth(health);
-                std::cout << "You have now " << m_player->getCharacter().getHealth() << " health" << std::endl;
-            } else if (input == "heal") {
-                std::cout << "How many health do you want to add ?" << std::endl;
-                int health;
-                std::cin >> health;
-                m_player->getCharacterPtr()->heal(health);
-                std::cout << "You have now " << m_player->getCharacter().getHealth() << " health" << std::endl;
-            }
-        } else {
-            std::cout << "You are not an admin" << std::endl;
-        }
-    } else {
-        std::cout << "Command not found" << std::endl;
     }
+    std::cout << "Command not found" << std::endl;
 }
-
-
-
 
 void Game::help() {
     std::cout << "Command list available:" << std::endl;
     std::cout << "help" << std::endl;
     std::cout << "quit" << std::endl;
+    std::cout << "stats" << std::endl;
     if (m_player->getAdmin()) {
         std::cout << "admin" << std::endl;
         std::cout << "addGold" << std::endl;
@@ -202,4 +147,17 @@ void Game::playerLevelUp() {
             std::cout << m_player->getCharacterPtr()->getExperience() << " / " << m_quetes[i]->getRequireExp() << std::endl;
         }
     }
+}
+
+void Game::setRunning(bool isRunning) {
+    m_isRunning = isRunning;
+}
+
+Player *Game::getPlayerPtr() const {
+    return m_player;
+}
+
+Game &Game::getInstance() {
+    static Game instance;
+    return instance;
 }

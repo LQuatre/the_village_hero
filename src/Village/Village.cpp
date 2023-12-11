@@ -45,21 +45,21 @@ int randomNumber(int min, int max) {
 
 void Village::genBuildingByType(std::string type) {
     if (type == "Auberge") {
-        auto *auberge = new Auberge("", rand() % 100 + 1, rand() % 100 + 1);
+        Auberge *auberge = new Auberge("", rand() % 100 + 1, rand() % 100 + 1);
         auberge->setName(auberge->generateName() + "'s Auberge");
         m_buildings.push_back(auberge);
     } else if (type == "Mine") {
         std::vector<Monster*> monsters;
-        auto *monster = new Monster(rand() % 100 + 1, rand() % 100 + 1);
+        Monster *monster = new Monster(rand() % 100 + 1, rand() % 100 + 1);
         monsters.push_back(monster);
-        auto *mine = new Mine("", rand() % 100 + 1, monsters);
+        Mine *mine = new Mine("", rand() % 100 + 1, monsters);
         mine->setName(mine->generateName() + "'s Mine");
         m_buildings.push_back(mine);
     } else if (type == "Dealer") {
         std::vector<Weapon*> weapons;
-        auto *weapon = new Weapon(rand() % 100 + 1, rand() % 100 + 1);
+        Weapon *weapon = new Weapon(rand() % 100 + 1, rand() % 100 + 1);
         weapons.push_back(weapon);
-        auto *dealer = new Dealer("", weapons);
+        Dealer *dealer = new Dealer("", weapons);
         dealer->setName(dealer->generateName() + "'s Dealer");
         m_buildings.push_back(dealer);
     }

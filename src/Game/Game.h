@@ -21,6 +21,8 @@ public:
 
     // Getters
     bool IsRunning() const;
+    void setRunning(bool isRunning);
+    Player* getPlayerPtr() const;
 
     // Setters
     void start();
@@ -32,6 +34,12 @@ public:
     void help();
     void playerAction(std::string action);
     void playerLevelUp();
+
+    // Attributes
+    bool ativatedFreeGold = false;
+
+    static Game &getInstance();
+
 private:
     bool m_isRunning = false;
 
